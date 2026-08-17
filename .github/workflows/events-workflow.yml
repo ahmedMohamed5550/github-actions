@@ -1,0 +1,16 @@
+name : events Workflow
+
+# on: workflow_dispatch
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, closed, reopened]
+
+# virtual machine = runner
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
