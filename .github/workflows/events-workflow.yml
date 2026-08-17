@@ -5,14 +5,14 @@ name : events Workflow
 on:
   push:
     branches: [master]
-    tags:
-      - 'v2'
-    paths:
-      - 'routes/*.php'
+    # tags:
+    #   - 'v2'
+    # paths:
+    #   - 'routes/*.php'
   pull_request:
     types: [opened, closed, reopened]
-    paths:
-      - 'routes/*.php'
+    # paths:
+    #   - 'routes/*.php'
 
 # virtual machine = runner
 jobs:
