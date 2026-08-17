@@ -2,7 +2,7 @@ name : events Workflow
 
 # on: workflow_dispatch
 on:
-  push:
+  # push:
   #   branches: [master]
   #   # tags:
   #   #   - 'v2.*.*'
