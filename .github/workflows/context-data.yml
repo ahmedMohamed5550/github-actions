@@ -18,3 +18,4 @@ jobs:
           echo "GITHUB_RUN_ID: ${{ github.run_id }}"
           echo "GITHUB_RUN_NUMBER: ${{ github.run_number }}"
           echo "GITHUB_JOB: ${{ github.job }}"
+          # echo ${{ toJSON(github) }} // to get all the context data in JSON format to github context data

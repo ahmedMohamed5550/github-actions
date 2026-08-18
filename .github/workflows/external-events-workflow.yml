@@ -1,4 +1,4 @@
-name: external-events-Workflow
+name: external-events-workflow
 
 on:
   repository_dispatch:
