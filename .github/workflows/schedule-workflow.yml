@@ -1,0 +1,13 @@
+name: schedule-Workflow
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+      timezone: "Africa/Cairo"
+
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
