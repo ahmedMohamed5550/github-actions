@@ -1,0 +1,23 @@
+name: external-events-Workflow
+
+on:
+  repository_dispatch:
+    types: [external-event]
+
+
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
+
+
+
+# curl -L \
+#   -X POST \
+#   -H "Accept: application/vnd.github+json" \
+#   -H "Authorization: Bearer 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" \
+#   -H "X-GitHub-Api-Version: 2026-03-10" \
+#   https://api.github.com/repos/ahmedMohamed5550/github-actions/dispatches \
+#   -d '{"event_type":"external-event"}'
