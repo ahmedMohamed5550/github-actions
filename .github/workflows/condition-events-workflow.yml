@@ -6,8 +6,8 @@ on:
 
 jobs:
   condition-events-workflow:
-    runs-on:ubuntu-latest
-    if: ${{ github.event.pull_request.merged == true }}
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - name: Run condition events workflow
         run: echo "This workflow runs only when a pull request is merged."
