@@ -12,3 +12,7 @@ jobs:
       - name: Run condition events workflow
         run: echo "This workflow runs only when a pull request is merged."
 
+      - name : Check number of changed files
+        if: github.event.pull_request.changed_files > 1
+        run: echo "This workflow runs only when a pull request has more than one changed file."
+
