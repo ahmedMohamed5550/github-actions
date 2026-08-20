@@ -9,13 +9,13 @@ env:
 jobs:
   print-env-variables-context:
     runs-on: ubuntu-latest
-      steps:
-        - name: Print ENV variables context
-          run: |
-            echo "APP_NAME: ${{ env.APP_NAME }}"
+    steps:
+      - name: Print ENV variables context
+        run: |
+          echo "APP_NAME: ${{ env.APP_NAME }}"
 
-print-config-variables-context:
-  runs-on: ubuntu-latest
+  print-config-variables-context:
+    runs-on: ubuntu-latest
     steps:
       - name: Print config variables context
         run: |
