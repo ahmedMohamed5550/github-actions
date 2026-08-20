@@ -20,3 +20,10 @@ jobs:
       - name: Print config variables context
         run: |
           echo "APP_CONFIG: ${{ vars.APP_CONFIG }}"
+
+  print-secrets-variables-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print secrets variables context
+        run: |
+          echo "APP_SECRET: ${{ secrets.MY_APP_SECRET }}"
