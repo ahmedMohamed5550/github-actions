@@ -1,0 +1,22 @@
+name: create-issue
+
+on: workflow_dispatch
+
+jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "New issue created by GitHub Actions"
+        run: exit 1
+
+      - name: open-issue
+        if: failure()
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.MY_GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"title":"New issue created by GitHub Actions","body":"This issue was created automatically by a GitHub Actions workflow."}' \
+            ${{ vars.CREATE_ISSUE_ENDPOINT }}
+
+
