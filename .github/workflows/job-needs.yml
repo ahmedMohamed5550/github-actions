@@ -1,0 +1,25 @@
+name: Needs-Job-Example
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Build step 1"
+        run: exit 1
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Test step 1"
+        run: echo "This is a test step that runs after the build job."
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Deploy step 1"
+        run: echo "This is a deploy step that runs after the test job."
+
