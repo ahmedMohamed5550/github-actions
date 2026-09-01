@@ -3,7 +3,7 @@ name: create-issue
 on: workflow_dispatch
 
 permissions:
-  issues: write-all
+  issues: write
 
 jobs:
   open-issue:
