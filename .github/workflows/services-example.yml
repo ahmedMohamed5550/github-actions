@@ -1,0 +1,21 @@
+name: services-example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  services-example:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: myclinic
+        ports:
+          - 3306:3306
+    steps:
+      - name: Check MySQL Service
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          until mysqladmin ping -h "
