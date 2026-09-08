@@ -15,9 +15,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
-      - name: Comment on PR using GitHub CLI
+      - name: Comment on merged PR
+        if: github.event.pull_request.merged == true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment ${{ github.event.pull_request.number }} --body "Thank you for your contribution! This pull request has been closed."
+          gh pr comment ${{ github.event.pull_request.number }} --body "🎉 Thank you for your contribution! This pull request has been merged."
+
+      - name: Comment on closed (unmerged) PR
+        if: github.event.pull_request.merged == false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "This pull request has been closed without merging."
 
