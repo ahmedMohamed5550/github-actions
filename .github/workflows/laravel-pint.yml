@@ -1,0 +1,43 @@
+name: Fix Code Style with Laravel Pint
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  pint:
+    runs-on: ubuntu-latest
+
+    # Only run when the pull request was merged
+    if: github.event.pull_request.merged == true
+
+    steps:
+    
+      # Checkout the repository
+      - name: Checkout repository base branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Run Laravel Pint
+        run: vendor/bin/pint
+
+      - name: Commit and push style fixes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Fix code style with Laravel Pint"
+
