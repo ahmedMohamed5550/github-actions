@@ -1,0 +1,23 @@
+name: PR Closed Comment
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  comment-on-close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Comment on PR using GitHub CLI
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "Thank you for your contribution! This pull request has been closed."
+
